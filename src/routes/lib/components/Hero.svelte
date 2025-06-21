@@ -11,7 +11,8 @@
 
   const command = "dhairya@portfolio:~$ whoami";
   const name = "Adroja Dhairya";
-  const tagline = "Shell Enthusiast | Retro Gamer | Web Developer";
+  const tagline =
+    "I don't just follow trends — I live at the edge where innovation happens.";
 
   onMount(() => {
     typeCommand();
@@ -39,7 +40,6 @@
       setTimeout(() => {
         showTagline = true;
       }, 1000);
-      commandDispatch("whoami");
     }
   }
 

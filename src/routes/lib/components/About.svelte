@@ -21,7 +21,7 @@
               <span class="text-terminal-pink">Passion:</span> Shell scripting, retro
               gaming, and building efficient tools
             </p>
-            <div
+            <!-- <div
               class="mt-6 p-4 bg-gray-800 bg-opacity-30 rounded border-l-4 border-terminal-purple"
             >
               <p class="text-terminal-light">
@@ -31,7 +31,7 @@
                 programming, he creates projects that combine functionality with
                 creativity.
               </p>
-            </div>
+            </div> -->
             <div class="mt-6 space-y-2">
               <p><span class="text-terminal-pink">Interests:</span></p>
               <ul class="list-none space-y-1 ml-4">

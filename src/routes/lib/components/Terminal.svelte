@@ -12,11 +12,20 @@
     }
   }
 
+  function openTerminal() {
+    if (!isVisible) {
+      isVisible = true;
+      setTimeout(() => inputRef.focus(), 100);
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     if (command.trim()) {
       commandCallback(command.trim());
       command = "";
+      // Close terminal after command execution
+      isVisible = false;
     }
   }
 
@@ -25,7 +34,31 @@
       isVisible = false;
     }
   }
+
+  function handleGlobalKeydown(event) {
+    // Don't trigger if user is already typing in an input field
+    if (
+      event.target.tagName === "INPUT" ||
+      event.target.tagName === "TEXTAREA"
+    ) {
+      return;
+    }
+
+    // Open terminal when user starts typing (letters, numbers, symbols)
+    if (
+      event.key.length === 1 &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey
+    ) {
+      openTerminal();
+      // Set the typed character as the first character in the command
+      command = event.key;
+    }
+  }
 </script>
+
+<svelte:window onkeydown={handleGlobalKeydown} />
 
 <!-- Terminal Toggle Button -->
 <button
