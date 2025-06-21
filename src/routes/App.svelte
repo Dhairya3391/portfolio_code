@@ -60,6 +60,11 @@
       case "clear":
         window.scrollTo({ top: 0, behavior: "smooth" });
         break;
+      case "help":
+        showEasterEgg =
+          "Available commands: ls, whoami, skills, projects, contact, clear, retro, help";
+        setTimeout(() => (showEasterEgg = ""), 4000);
+        break;
     }
   }
 
@@ -74,6 +79,19 @@
   onMount(() => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = "smooth";
+
+    // Add keyboard navigation
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        showEasterEgg = "";
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   });
 </script>
 
@@ -81,10 +99,16 @@
   <!-- Easter Egg Display -->
   {#if showEasterEgg !== ""}
     <div
-      class="fixed top-4 right-4 z-50 bg-terminal-purple text-white px-4 py-2 rounded border border-terminal-pink animate-pulse"
+      class="fixed top-4 right-4 z-50 bg-terminal-purple text-white px-4 py-2 rounded border border-terminal-pink animate-pulse max-w-xs"
     >
       <span class="text-terminal-pink">$</span>
       {showEasterEgg}
+      <button
+        class="ml-2 text-terminal-light hover:text-terminal-pink"
+        onclick={() => (showEasterEgg = "")}
+      >
+        ×
+      </button>
     </div>
   {/if}
 

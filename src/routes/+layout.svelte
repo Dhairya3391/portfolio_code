@@ -1,7 +1,11 @@
 <script lang="ts">
-	import '../app.css';
-	
-	let { children } = $props();
+  import { inject } from "@vercel/analytics";
+  import "../app.css";
+
+  let { children } = $props();
+
+  // Initialize analytics
+  inject();
 </script>
 
 {@render children()}

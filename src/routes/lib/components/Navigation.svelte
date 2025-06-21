@@ -73,7 +73,7 @@
           Quick commands:
         </p>
         <div class="flex flex-wrap gap-2">
-          {#each ["whoami", "cat about.txt", "cat skills.txt", "ls projects", "retro"] as cmd}
+          {#each ["whoami", "cat about.txt", "cat skills.txt", "ls projects", "retro", "help"] as cmd}
             <button
               class="command-button text-xs"
               onclick={() => executeCommand(cmd)}

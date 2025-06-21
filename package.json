@@ -1,7 +1,8 @@
 {
-  "name": "base-sveltekit-app",
+  "name": "adroja-dhairya-portfolio",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "Adroja Dhairya's Full Stack Developer Portfolio - A terminal-themed showcase of projects and skills",
   "type": "module",
   "scripts": {
     "dev": "vite dev",
@@ -11,8 +12,21 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "format": "prettier --write .",
-    "lint": "prettier --check ."
+    "lint": "prettier --check .",
+    "analyze": "vite build --mode analyze",
+    "deploy": "vite build && vercel --prod"
   },
+  "keywords": [
+    "portfolio",
+    "svelte",
+    "sveltekit",
+    "full-stack",
+    "developer",
+    "terminal",
+    "typescript"
+  ],
+  "author": "Adroja Dhairya",
+  "license": "MIT",
   "devDependencies": {
     "@sveltejs/adapter-auto": "^6.0.0",
     "@sveltejs/kit": "^2.16.0",
@@ -25,7 +39,10 @@
     "svelte-check": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "5.7.3",
-    "vite": "^6.2.6"
+    "vite": "^6.2.6",
+    "vite-plugin-devtools-json": "^0.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
 }
