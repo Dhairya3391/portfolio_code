@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Custom terminal color variables */
+:root {
+  --terminal-dark: #121212;
+  --terminal-light: #E0E0E0;
+  --terminal-pink: #FFB3BA;
+  --terminal-purple: #6A0DAD;
+}
+
+/* Terminal-specific styles */
+.text-terminal-dark { color: var(--terminal-dark); }
+.text-terminal-light { color: var(--terminal-light); }
+.text-terminal-pink { color: var(--terminal-pink); }
+.text-terminal-purple { color: var(--terminal-purple); }
+.bg-terminal-dark { background-color: var(--terminal-dark); }
+.bg-terminal-light { background-color: var(--terminal-light); }
+.bg-terminal-pink { background-color: var(--terminal-pink); }
+.bg-terminal-purple { background-color: var(--terminal-purple); }
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background-color: #1a1a1a;
+  color: #E0E0E0;
+}
+
+/* Animation keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+} 
