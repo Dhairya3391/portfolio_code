@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
   import Hero from "./lib/components/Hero.svelte";
   import About from "./lib/components/About.svelte";
@@ -22,7 +22,7 @@
     "Game Over - Insert Coin to Continue",
   ];
 
-  function handleCommand(command) {
+  function handleCommand(command: string) {
     const cmd = command.toLowerCase().trim();
 
     if (cmd === "retro") {
@@ -63,7 +63,7 @@
     }
   }
 
-  function scrollToSection(sectionId) {
+  function scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });

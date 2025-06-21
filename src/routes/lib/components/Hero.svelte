@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
 
   let { commandDispatch } = $props();
@@ -28,22 +28,20 @@
   async function typeCommand() {
     for (let i = 0; i <= command.length; i++) {
       typewriterText = command.slice(0, i);
-      await new Promise((resolve) => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 50));
     }
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 200));
   }
 
   function executeCommand() {
     if (!commandExecuted) {
       commandExecuted = true;
       showWhoami = true;
-      setTimeout(() => {
-        showTagline = true;
-      }, 1000);
+      showTagline = true;
     }
   }
 
-  function handleKeyPress(event) {
+  function handleKeyPress(event: KeyboardEvent) {
     if (event.key === "Enter") {
       executeCommand();
     }

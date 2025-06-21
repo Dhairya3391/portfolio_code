@@ -1,25 +1,27 @@
-<script>
-  let { commandCallback } = $props();
+<script lang="ts">
+  let { commandCallback } = $props<{
+    commandCallback: (command: string) => void;
+  }>();
 
   let isVisible = $state(false);
   let command = $state("");
-  let inputRef = $state();
+  let inputRef = $state<HTMLInputElement>();
 
   function toggleTerminal() {
     isVisible = !isVisible;
     if (isVisible && inputRef) {
-      setTimeout(() => inputRef.focus(), 100);
+      setTimeout(() => inputRef?.focus(), 100);
     }
   }
 
   function openTerminal() {
     if (!isVisible) {
       isVisible = true;
-      setTimeout(() => inputRef.focus(), 100);
+      setTimeout(() => inputRef?.focus(), 100);
     }
   }
 
-  function handleSubmit(event) {
+  function handleSubmit(event: SubmitEvent) {
     event.preventDefault();
     if (command.trim()) {
       commandCallback(command.trim());
@@ -29,18 +31,16 @@
     }
   }
 
-  function handleKeydown(event) {
+  function handleKeydown(event: KeyboardEvent) {
     if (event.key === "Escape") {
       isVisible = false;
     }
   }
 
-  function handleGlobalKeydown(event) {
+  function handleGlobalKeydown(event: KeyboardEvent) {
     // Don't trigger if user is already typing in an input field
-    if (
-      event.target.tagName === "INPUT" ||
-      event.target.tagName === "TEXTAREA"
-    ) {
+    const target = event.target as HTMLElement;
+    if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") {
       return;
     }
 

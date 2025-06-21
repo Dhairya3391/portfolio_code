@@ -1,5 +1,5 @@
-<script>
-  let { command } = $props();
+<script lang="ts">
+  let { command } = $props<{ command: (cmd: string) => void }>();
 
   const sections = [
     {
@@ -22,14 +22,9 @@
       command: "cat contact.txt",
       description: "Get in touch and social links",
     },
-    {
-      name: "resume.pdf",
-      command: "download resume",
-      description: "Download my resume",
-    },
   ];
 
-  function executeCommand(cmd) {
+  function executeCommand(cmd: string) {
     command(cmd);
   }
 </script>
@@ -49,18 +44,22 @@
 
         {#each sections as section, index}
           <div
-            class="flex items-center justify-between group hover:bg-gray-800 hover:bg-opacity-30 p-2 rounded transition-all duration-200"
+            class="flex items-center justify-between group hover:bg-gray-800 hover:bg-opacity-30 p-2 rounded transition-all duration-200 cursor-pointer"
+            onclick={() => executeCommand(section.command)}
+            onkeydown={(e) =>
+              e.key === "Enter" && executeCommand(section.command)}
+            role="button"
+            tabindex="0"
           >
             <div class="flex items-center space-x-4 flex-1">
               <span class="text-terminal-pink text-sm w-12">
                 {section.name.includes(".") ? "-rw-r--r--" : "drwxr-xr-x"}
               </span>
-              <button
-                class="text-terminal-light hover:text-terminal-pink transition-colors text-left"
-                onclick={() => executeCommand(section.command)}
+              <span
+                class="text-terminal-light group-hover:text-terminal-pink transition-colors"
               >
                 {section.name}
-              </button>
+              </span>
             </div>
             <div class="text-terminal-light opacity-50 text-sm hidden md:block">
               {section.description}

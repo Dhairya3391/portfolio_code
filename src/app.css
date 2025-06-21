@@ -3,27 +3,56 @@
 /* Custom terminal color variables */
 :root {
   --terminal-dark: #121212;
-  --terminal-light: #E0E0E0;
-  --terminal-pink: #FFB3BA;
-  --terminal-purple: #6A0DAD;
+  --terminal-light: #e0e0e0;
+  --terminal-pink: #ffb3ba;
+  --terminal-purple: #6a0dad;
 }
 
 /* Terminal-specific styles */
-.text-terminal-dark { color: var(--terminal-dark); }
-.text-terminal-light { color: var(--terminal-light); }
-.text-terminal-pink { color: var(--terminal-pink); }
-.text-terminal-purple { color: var(--terminal-purple); }
-.bg-terminal-dark { background-color: var(--terminal-dark); }
-.bg-terminal-light { background-color: var(--terminal-light); }
-.bg-terminal-pink { background-color: var(--terminal-pink); }
-.bg-terminal-purple { background-color: var(--terminal-purple); }
+.text-terminal-dark {
+  color: var(--terminal-dark);
+}
+.text-terminal-light {
+  color: var(--terminal-light);
+}
+.text-terminal-pink {
+  color: var(--terminal-pink);
+}
+.text-terminal-purple {
+  color: var(--terminal-purple);
+}
+.bg-terminal-dark {
+  background-color: var(--terminal-dark);
+}
+.bg-terminal-light {
+  background-color: var(--terminal-light);
+}
+.bg-terminal-pink {
+  background-color: var(--terminal-pink);
+}
+.bg-terminal-purple {
+  background-color: var(--terminal-purple);
+}
 
 /* Global styles */
 body {
   margin: 0;
-  font-family: 'Courier New', monospace;
+  font-family: "Courier New", monospace;
   background-color: #1a1a1a;
-  color: #E0E0E0;
+  color: #e0e0e0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Global mobile improvements */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure text doesn't overflow on mobile */
+p, span, div, a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Animation keyframes */
@@ -40,4 +69,23 @@ body {
 
 .animate-fade-in {
   animation: fade-in 0.5s ease-out;
-} 
+}
+
+/* Mobile-specific global styles */
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+  
+  /* Ensure containers don't overflow */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

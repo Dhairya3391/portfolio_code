@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   const projects = [
     {
       id: 1,
@@ -62,7 +62,7 @@
     },
   ];
 
-  function getStatusColor(status) {
+  function getStatusColor(status: string) {
     switch (status) {
       case "Completed":
         return "text-green-400";
@@ -74,36 +74,44 @@
   }
 </script>
 
-<div class="container mx-auto px-4 py-16">
+<div class="container mx-auto px-4 sm:px-6 py-8 sm:py-16">
   <div class="terminal-window max-w-6xl mx-auto">
     <div class="terminal-header">
-      <span class="text-terminal-pink">dhairya@portfolio:~$</span>
-      <span class="text-terminal-light ml-2">ls projects/ -la</span>
+      <span class="text-terminal-pink text-sm sm:text-base"
+        >dhairya@portfolio:~$</span
+      >
+      <span class="text-terminal-light ml-2 text-sm sm:text-base"
+        >ls projects/ -la</span
+      >
     </div>
 
-    <div class="terminal-content p-6">
-      <div class="space-y-8">
-        <div class="flex items-center justify-between">
-          <h2 class="text-2xl font-bold text-terminal-pink">
+    <div class="terminal-content p-4 sm:p-6">
+      <div class="space-y-6 sm:space-y-8">
+        <div
+          class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+        >
+          <h2 class="text-xl sm:text-2xl font-bold text-terminal-pink">
             Projects Directory
           </h2>
-          <span class="text-terminal-light opacity-70 text-sm">
+          <span class="text-terminal-light opacity-70 text-xs sm:text-sm">
             total {projects.length} projects
           </span>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {#each projects as project}
             <div class="project-card group">
               <div class="project-header">
-                <div class="flex items-center justify-between">
-                  <h3 class="text-terminal-pink font-bold text-lg">
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2"
+                >
+                  <h3 class="text-terminal-pink font-bold text-base sm:text-lg">
                     📁 {project.name}
                   </h3>
                   <span
                     class="text-xs px-2 py-1 rounded border {getStatusColor(
                       project.status
-                    )} border-current"
+                    )} border-current self-start sm:self-auto"
                   >
                     {project.status}
                   </span>
@@ -111,30 +119,36 @@
               </div>
 
               <div class="project-content">
-                <p class="text-terminal-light text-sm mb-4 leading-relaxed">
+                <p
+                  class="text-terminal-light text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed"
+                >
                   {project.description}
                 </p>
 
-                <div class="mb-4">
-                  <h4 class="text-terminal-pink text-sm font-semibold mb-2">
+                <div class="mb-3 sm:mb-4">
+                  <h4
+                    class="text-terminal-pink text-xs sm:text-sm font-semibold mb-2"
+                  >
                     Technologies:
                   </h4>
-                  <div class="flex flex-wrap gap-2">
+                  <div class="flex flex-wrap gap-1 sm:gap-2">
                     {#each project.technologies as tech}
-                      <span class="tech-tag">
+                      <span class="tech-tag text-xs">
                         {tech}
                       </span>
                     {/each}
                   </div>
                 </div>
 
-                <div class="mb-4">
-                  <h4 class="text-terminal-pink text-sm font-semibold mb-2">
+                <div class="mb-3 sm:mb-4">
+                  <h4
+                    class="text-terminal-pink text-xs sm:text-sm font-semibold mb-2"
+                  >
                     Key Features:
                   </h4>
                   <ul class="space-y-1">
                     {#each project.features as feature}
-                      <li class="text-terminal-light text-sm">
+                      <li class="text-terminal-light text-xs sm:text-sm">
                         <span class="text-terminal-pink">></span>
                         {feature}
                       </li>
@@ -147,7 +161,7 @@
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="project-link"
+                    class="project-link text-xs sm:text-sm"
                   >
                     <span class="text-terminal-pink">$</span> git clone {project.link}
                   </a>
@@ -180,10 +194,12 @@
 
   .terminal-header {
     background: #2d2d2d;
-    padding: 12px 16px;
+    padding: 8px 12px;
     border-bottom: 1px solid #333;
     border-radius: 8px 8px 0 0;
     font-family: "Fira Code", monospace;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .terminal-content {
@@ -208,26 +224,26 @@
 
   .project-header {
     background: rgba(45, 45, 45, 0.5);
-    padding: 16px;
+    padding: 12px;
     border-bottom: 1px solid rgba(106, 13, 173, 0.3);
   }
 
   .project-content {
-    padding: 16px;
+    padding: 12px;
   }
 
   .tech-tag {
     background: rgba(255, 179, 186, 0.2);
     color: #ffb3ba;
-    padding: 4px 8px;
+    padding: 2px 6px;
     border-radius: 4px;
     font-size: 0.75rem;
     border: 1px solid rgba(255, 179, 186, 0.3);
   }
 
   .project-footer {
-    margin-top: 16px;
-    padding-top: 16px;
+    margin-top: 12px;
+    padding-top: 12px;
     border-top: 1px solid rgba(106, 13, 173, 0.3);
   }
 
@@ -238,10 +254,13 @@
     font-family: "Fira Code", monospace;
     transition: all 0.2s ease;
     display: block;
-    padding: 8px;
+    padding: 6px 8px;
     background: rgba(0, 0, 0, 0.3);
     border-radius: 4px;
     border: 1px solid transparent;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
   }
 
   .project-link:hover {
@@ -249,5 +268,62 @@
     background: rgba(0, 0, 0, 0.5);
     border-color: rgba(255, 179, 186, 0.3);
     transform: translateX(4px);
+  }
+
+  /* Mobile-specific improvements */
+  @media (max-width: 640px) {
+    .terminal-header {
+      font-size: 0.875rem;
+      padding: 8px 12px;
+    }
+
+    .terminal-content {
+      padding: 12px;
+    }
+
+    .project-header {
+      padding: 12px;
+    }
+
+    .project-content {
+      padding: 12px;
+    }
+
+    .tech-tag {
+      font-size: 0.75rem;
+      padding: 2px 6px;
+    }
+
+    .project-link {
+      font-size: 0.75rem;
+      padding: 6px 8px;
+    }
+  }
+
+  /* Desktop improvements */
+  @media (min-width: 640px) {
+    .terminal-header {
+      padding: 12px 16px;
+    }
+
+    .terminal-content {
+      padding: 24px;
+    }
+
+    .project-header {
+      padding: 16px;
+    }
+
+    .project-content {
+      padding: 16px;
+    }
+
+    .tech-tag {
+      padding: 4px 8px;
+    }
+
+    .project-link {
+      padding: 8px;
+    }
   }
 </style>
