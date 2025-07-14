@@ -22,7 +22,7 @@
         "An ongoing college project focused on learning Entity Framework Core as part of B.Tech CSE 5th-semester coursework.",
       technologies: ["ASP.NET", "EF Core"],
       status: "In Progress",
-      link: "https://github.com/Dhairya3391/MyWebApi", // Placeholder
+      link: "https://github.com/Dhairya3391/MyWebApi",
       features: [
         "Entity Framework Core",
         "Database First Approach",
@@ -52,7 +52,7 @@
         "A Rust-based tool for setting wallpapers on a phone using the Termux API. It's fully safe, faster than the native API, and auto-crops/adjusts images to fit the screen size.",
       technologies: ["Rust", "Termux API"],
       status: "Completed",
-      link: "https://github.com/Dhairya3391/wallpaper-setter", // Placeholder
+      link: "https://github.com/Dhairya3391/wallpaper-setter",
       features: [
         "Rust Performance",
         "Auto-crop Images",
